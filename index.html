@@ -242,32 +242,29 @@ const K={
   d:{sill:0,head:2.1,leaf:true},             // portas de abrir, folha aberta a 90°
   pv:{sill:0,head:2.1,slide:2},              // P1 e P10: portas de vidro de correr de 2,00 m, 2 folhas (uma fixa e uma que corre)
   j:{sill:1.1,head:2.1,win:true,mull:true},  // J1, J2, J3, J7: 1,20 × 1,00, de correr, peitoril 1,10
-  jb:{sill:1.7,head:2.1,win:true}            // J4, J5, J6, J8: 0,40 de altura, basculante, peitoril 1,70
+  jb:{sill:1.7,head:2.1,win:true}            // J4, J5: 0,40 de altura, basculante, peitoril 1,70
 };
-const SIZE={P1:'2,00 × 2,10 (vidro, de correr)',P2:'0,80 × 2,10',P3:'0,80 × 2,10',P4:'0,70 × 2,10',P5:'0,70 × 2,10',P6:'0,80 × 2,10',P7:'0,80 × 2,10',P8:'0,90 × 2,10',P9:'0,70 × 2,10',P10:'2,00 × 2,10 (vidro, de correr)',
-  J1:'1,20 × 1,00',J2:'1,20 × 1,00',J3:'1,20 × 1,00',J4:'0,60 × 0,40',J5:'0,60 × 0,40',J6:'1,20 × 0,40',J7:'1,20 × 1,00',J8:'0,40 × 0,40'};
+const SIZE={P1:'2,00 × 2,10 (vidro, de correr)',P2:'0,80 × 2,10',P3:'0,80 × 2,10',P4:'0,70 × 2,10',P5:'0,70 × 2,10',P6:'0,80 × 2,10',P10:'2,00 × 2,10 (vidro, de correr)',
+  J1:'1,20 × 1,00',J2:'1,20 × 1,00',J3:'1,20 × 1,00',J4:'0,60 × 0,40',J5:'0,60 × 0,40',J7:'1,20 × 1,00'};
 
 // paredes: [x1,z1,x2,z2,[vãos]]; vão = [início,fim (no eixo da parede),tipo,código,dobradiça 'a'|'b',lado da folha ±1]
 const WALLS=[
   // casa
-  [2.85,-0.15,9.30,0,      [[3.50,5.50,'pv','P1']]],                                      // fachada: sala (P1 de vidro, 2,00 m no meio da parede; no rascunho era 1,50) e quarto 1
+  [2.85,-0.15,9.30,0,      [[3.50,5.50,'pv','P1'],[7.05,8.25,'j','J2']]],                 // fachada: sala (P1 de vidro, 2,00 m no meio da parede; no rascunho era 1,50) e quarto 1 (J2 no meio, saiu da lateral)
   [0,-3.80,2.85,-3.65,     [[0.85,2.05,'j','J1']]],                                       // frente do quarto 2, para a área livre
   [6.15,-3.30,9.15,-3.15,  []],                                                           // quarto 1 | suíte
-  [0.15,-6.95,2.85,-6.80,  []],                                                           // quarto 2 | lavanderia
   [6.15,-6.45,9.15,-6.30,  [[6.25,6.95,'d','P4','a',-1]]],                                // suíte | banheiro da suíte
-  [0.15,-8.60,6.00,-8.45,  [[0.45,1.65,'jb','J6'],[1.95,2.75,'d','P7','b',1],[3.80,5.80,'pv','P10']]], // fundo da lavanderia e da cozinha; P10 (fora do rascunho) no meio do trecho livre entre a bancada e a parede da direita
+  [0.15,-8.60,6.00,-8.45,  [[3.80,5.80,'pv','P10']]],                                    // fundo do quarto 2 e da cozinha; P10 (fora do rascunho) no meio do trecho livre entre a bancada e a parede da direita
   [6.15,-8.60,9.15,-8.45,  []],                                                           // banheiro da suíte | banheiro
   [6.15,-10.75,9.30,-10.60,[]],                                                           // fundo do banheiro
   [0,-10.75,0.15,-3.80,    []],                                                           // lateral esquerda
   [2.85,-8.45,3.00,-0.15,  [[-4.70,-3.90,'d','P6','b',-1]]],                              // quarto 2 e lavanderia | cozinha; sala | área livre
   [6.00,-10.75,6.15,-0.15, [[-9.45,-8.75,'d','P5','b',1],[-4.20,-3.40,'d','P3','b',1],[-3.05,-2.25,'d','P2','a',1]]], // ala do meio | ala da direita
-  [9.15,-10.60,9.30,-0.15, [[-9.90,-9.30,'jb','J5'],[-7.90,-7.30,'jb','J4'],[-5.40,-4.20,'j','J3'],[-2.25,-1.05,'j','J2']]], // lateral direita
+  [9.15,-10.60,9.30,-0.15, [[-9.90,-9.30,'jb','J5'],[-7.90,-7.30,'jb','J4'],[-5.40,-4.20,'j','J3']]], // lateral direita
   // edícula
-  [4.75,-13.90,9.30,-13.75,[[6.45,7.65,'j','J7'],[8.65,9.05,'jb','J8']]],                 // frente, virada para a casa
+  [4.75,-13.90,9.30,-13.75,[[6.45,7.65,'j','J7']]],                                       // frente, virada para a casa
   [0,-16.05,9.30,-15.90,   []],                                                           // fundo
   [0,-15.90,0.15,-13.75,   []],                                                           // lateral esquerda
-  [4.75,-15.90,4.90,-13.90,[[-14.90,-14.00,'d','P8','b',1]]],                             // área coberta | cozinha de fundo
-  [7.90,-15.90,8.05,-13.90,[[-15.80,-15.10,'d','P9','a',-1]]],                            // cozinha de fundo | banheiro
   [9.15,-15.90,9.30,-13.90,[]]                                                            // lateral direita
 ];
 // cômodos: r = [x1,z1,x2,z2] do vão livre; c = vãos do cômodo; x = observação
@@ -278,12 +275,11 @@ const ROOMS=[
   {n:'Suíte',r:[6.15,-6.30,9.15,-3.30],t:'quarto',c:['P3','P4','J3']},
   {n:'Banheiro da suíte',l:'Banheiro<br>da suíte',r:[6.15,-8.45,9.15,-6.45],t:'wc',c:['P4','J4']},
   {n:'Banheiro',r:[6.15,-10.60,9.15,-8.60],t:'wc',c:['P5','J5']},
-  {n:'Quarto 2',r:[0.15,-6.80,2.85,-3.80],t:'quarto',c:['P6','J1']},
-  {n:'Lavanderia',r:[0.15,-8.45,2.85,-6.95],t:'serv',c:['P7','J6']},
-  {n:'Área coberta dos fundos',l:'Área coberta<br>dos fundos',r:[0.15,-10.60,6.00,-8.60],t:'cob',c:['P7','P10','P5'],x:'sob a laje, aberta para o quintal'},
-  {n:'Cozinha de fundo',l:'Cozinha<br>de fundo',r:[4.90,-15.90,7.90,-13.90],t:'serv',c:['P8','P9','J7']},
-  {n:'Banheiro da edícula',l:'Banh.<br>edíc.',r:[8.05,-15.90,9.15,-13.90],t:'wc',c:['P9','J8']},
-  {n:'Área coberta da edícula',l:'Área coberta<br>da edícula',r:[0.15,-15.90,4.75,-13.90],t:'cob',c:['P8'],x:'sob a laje, aberta para o quintal'},
+  {n:'Quarto 2',r:[0.15,-8.45,2.85,-3.80],t:'quarto',c:['P6','J1'],x:'ficou com o lugar da lavanderia'},
+  {n:'Lavanderia',r:[0.15,-10.60,1.65,-8.60],t:'serv',x:'aberta, sob a laje, encostada na divisa da esquerda'},
+  {n:'Área coberta dos fundos',l:'Área coberta<br>dos fundos',r:[1.65,-10.60,6.00,-8.60],t:'cob',c:['P10','P5'],x:'sob a laje, aberta para o quintal'},
+  {n:'Cozinha de fundo',l:'Cozinha<br>de fundo',r:[4.75,-15.90,9.15,-13.90],t:'serv',c:['J7'],x:'aberta para a área coberta da edícula'},
+  {n:'Área coberta da edícula',l:'Área coberta<br>da edícula',r:[0.15,-15.90,4.75,-13.90],t:'cob',x:'sob o telhado, aberta para o quintal e para a cozinha de fundo'},
   {n:'Quintal',r:[0,-13.75,10.80,-10.75],t:'grass',x:'distância da casa à edícula suposta'},
   {n:'Área livre da frente',l:'Área livre<br>da frente',r:[0,-3.65,2.85,0],t:'ext',c:['J1'],x:'sem cômodo no rascunho'},
   {n:'Corredor lateral',l:'Corredor<br>lateral',lz:-6.4,r:[9.30,-10.75,10.80,0],t:'ext',x:'largura suposta, para as janelas da direita'}
@@ -602,25 +598,25 @@ F(3.00,3.45,1.65,2.25,-7.20,-6.30,M.steel);                                     
 {const p=put(3.00,-5.69,'e'); p(-0.36,0.36,0,1.85,0,0.70,M.steel);}                      // geladeira
 table(5.20,6.00,-7.40,-6.00);
 chair(4.90,-7.05,'e'); chair(4.90,-6.35,'e'); chair(5.60,-7.68,'s'); chair(5.60,-5.72,'n');
-// quarto 1 (3 × 3): cabeceira na fachada, guarda-roupa no fundo (a P2 abre ao lado dele)
-bed(7.80,-0.15,'n',1.38,1.88); wardrobe(7.00,9.15,-3.15,-2.60);
+// quarto 1 (3 × 3): cabeceira na fachada, sob a J2, guarda-roupa no fundo (a P2 abre ao lado dele)
+bed(7.65,-0.15,'n',1.38,1.88); wardrobe(7.00,9.15,-3.15,-2.60);
 // suíte (3 × 3): cama na vertical, encostada na parede da J3, com a cabeceira na parede da frente e criado-mudo do lado livre; guarda-roupa no fundo
 bed(8.43,-3.30,'n',1.38,1.88,[1]); wardrobe(7.05,9.15,-6.30,-5.70);
-// quarto 2 (2,70 × 3): cama na vertical com a cabeceira sob a J1, puxada para a esquerda para a P6 abrir; guarda-roupa na parede do fundo
-bed(1.29,-3.80,'n',1.38,1.88,[1]); wardrobe(0.15,2.85,-6.80,-6.20);
+// quarto 2 (2,70 × 4,65): cama na vertical com a cabeceira sob a J1, puxada para a esquerda para a P6 abrir; escrivaninha na parede da esquerda; guarda-roupa na parede do fundo
+bed(1.29,-3.80,'n',1.38,1.88,[1]); wardrobe(0.15,2.85,-8.45,-7.85);
+F(0.15,0.70,0.72,0.75,-7.30,-6.20,M.oak); F(0.15,0.70,0.40,0.72,-7.30,-7.26,M.oak); F(0.15,0.70,0.40,0.72,-6.24,-6.20,M.oak); chair(0.95,-6.75,'w');
 // banheiro da suíte
 vanity(6.82,-8.45,'s',0.90); toilet(7.75,-8.45,'s');
 glassPanel(8.13,8.15,-8.45,-7.25); glassPanel(8.15,8.65,-7.27,-7.25); cyl(8.75,-8.30,0.11,2.1,2.13,M.steel);
 // banheiro
 vanity(7.40,-8.60,'n',0.80); toilet(6.95,-10.60,'s');
 glassPanel(8.13,8.15,-10.60,-9.40); glassPanel(8.15,8.65,-9.42,-9.40); cyl(8.75,-10.45,0.11,2.1,2.13,M.steel);
-// lavanderia (2,70 × 1,50): máquina no fundo, tanque na parede do quarto (a P7 abre junto da parede da cozinha)
-washer(0.55,-8.45,'s'); tanque(1.60,-6.95,'n');
-// edícula: cozinha de fundo, banheiro e mesa na área coberta
-counter(4.90,7.10,-15.90,-15.30); F(5.25,5.85,0.88,0.905,-15.80,-15.40,M.steel,false); F(6.30,6.90,0.9,0.915,-15.82,-15.38,M.black,false);
+// lavanderia: no canto da área coberta dos fundos, com a máquina e o tanque encostados na divisa da esquerda
+washer(0.15,-8.95,'e'); tanque(0.15,-9.65,'e');
+// edícula: cozinha de fundo aberta para a mesa da área coberta (sem parede e sem banheiro); geladeira no canto onde era o banheiro
+counter(4.75,7.10,-15.90,-15.30); F(5.25,5.85,0.88,0.905,-15.80,-15.40,M.steel,false); F(6.30,6.90,0.9,0.915,-15.82,-15.38,M.black,false);
 cyl(6.70,-14.55,0.40,0.72,0.75,M.oak); cyl(6.70,-14.55,0.04,0,0.72,M.black); chair(6.15,-14.55,'e'); chair(7.25,-14.55,'w');
-toilet(8.75,-15.90,'s'); vanity(9.15,-14.95,'w',0.45);
-glassPanel(8.05,8.60,-14.62,-14.60); cyl(8.20,-14.25,0.11,2.1,2.13,M.steel);
+{const p=put(8.75,-15.90,'s'); p(-0.36,0.36,0,1.85,0,0.70,M.steel);}
 table(1.55,3.35,-15.35,-14.45); [1.85,2.45,3.05].forEach(x=>{chair(x,-15.62,'s'); chair(x,-14.18,'n');});
 
 /* rótulos: nomes dos cômodos (aparecem sem o teto) */

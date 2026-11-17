@@ -18,7 +18,7 @@ Modelo 3D interativo da casa desenhada no rascunho à mão: uma página HTML só
 
 ## Medidas
 
-As medidas são o vão livre de cada cômodo; as paredes têm 15 cm. Os quartos e a lavanderia já estão nas medidas novas pedidas depois do rascunho.
+As medidas são o vão livre de cada cômodo; as paredes têm 15 cm. Os quartos, a lavanderia e a edícula já estão nas medidas novas pedidas depois do rascunho.
 
 | Cômodo | Medida |
 | --- | --- |
@@ -28,16 +28,15 @@ As medidas são o vão livre de cada cômodo; as paredes têm 15 cm. Os quartos 
 | Suíte | 3,00 × 3,00 |
 | Banheiro da suíte | 3,00 × 2,00 |
 | Banheiro | 3,00 × 2,00 |
-| Quarto 2 (esquerda) | 2,70 × 3,00 |
-| Lavanderia | 2,70 × 1,50 |
-| Área coberta dos fundos | 5,85 × 2,00 |
-| Cozinha de fundo | 3,00 × 2,00 |
-| Banheiro da edícula | 1,10 × 2,00 |
+| Quarto 2 (esquerda) | 2,70 × 4,65 |
+| Lavanderia (aberta, na área coberta dos fundos) | 1,50 × 2,00 |
+| Área coberta dos fundos | 4,35 × 2,00 |
+| Cozinha de fundo | 4,40 × 2,00 |
 | Área coberta da edícula | 4,60 × 2,00 |
 
 A sala e a cozinha são um ambiente só, dividido pelo balcão. O balcão fica na linha da parede do Quarto 2 com a garagem, e a cozinha vai dele até a linha entre os banheiros.
 
-As portas têm 2,10 m de altura: P8 0,90, P2/P3/P6/P7 0,80, P4/P5/P9 0,70. A P1 (no rascunho, 1,50) e a P10 (fora do rascunho) viraram portas de vidro de correr de 2,00 m. As janelas seguem a lista do rascunho e têm o topo a 2,10 m: J1, J2, J3 e J7 (1,20 × 1,00) com peitoril de 1,10; J4, J5, J6 e J8 (0,40 de altura) com peitoril de 1,70.
+As portas têm 2,10 m de altura: P2/P3/P6 0,80, P4/P5 0,70. A P1 (no rascunho, 1,50) e a P10 (fora do rascunho) viraram portas de vidro de correr de 2,00 m. As janelas seguem a lista do rascunho e têm o topo a 2,10 m: J1, J2, J3 e J7 (1,20 × 1,00) com peitoril de 1,10; J4 e J5 (0,40 de altura) com peitoril de 1,70. A P7, a P8, a P9, a J6 e a J8 saíram junto com a lavanderia de dentro, a parede da cozinha de fundo e o banheiro da edícula; os outros códigos continuam os do rascunho.
 
 ## Alterações pedidas depois do rascunho
 
@@ -58,21 +57,28 @@ As portas têm 2,10 m de altura: P8 0,90, P2/P3/P6/P7 0,80, P4/P5/P9 0,70. A P1 
   - Quarto 1: cabeceira na fachada e guarda-roupa no fundo.
   - Suíte: cama de casal (1,38) na vertical, encostada na parede da J3, com a cabeceira na parede da frente e o criado-mudo do lado livre. O guarda-roupa fica no fundo.
   - Quarto 2: cama na vertical, com a cabeceira sob a J1. Ela foi puxada para a esquerda para a P6 abrir, e o criado-mudo fica desse lado. O guarda-roupa ocupa a parede do fundo.
-  - Nos três quartos sobram cerca de 50 cm entre o pé da cama e o guarda-roupa.
+  - No Quarto 1 e na Suíte sobram cerca de 50 cm entre o pé da cama e o guarda-roupa.
 - **Caixote:** a laje da casa avança 0,60 m e fecha numa caixa de 0,50 m de altura, que desce 0,18 abaixo da laje e sobe 0,20 acima dela. Ele contorna a frente, a lateral direita, o fundo e os dois lados que dão para a área livre da frente. A lateral esquerda faz divisa com o vizinho e fica sem caixote, com a laje rente à parede.
 - **Telhado da edícula:** a laje aparente deu lugar a um telhado de telha de barro (capa e canal) em meia-água de 35%, que cai para o quintal. A laje continua por baixo, como forro, e as paredes laterais sobem em oitão até o telhado.
   - O beiral tem 0,60 m para o quintal e 0,30 m para a direita, com tabuado e testeira de madeira.
   - Na esquerda e no fundo, que fazem divisa, não há beiral; no alto, junto do fundo, há um rufo.
+- **J2:** a janela do Quarto 1 saiu da lateral direita e foi para a fachada, no meio da parede do quarto. A cama foi para o meio do quarto, com a cabeceira sob a janela, como no Quarto 2.
+- **Lavanderia:** saiu de dentro da casa e foi para o canto esquerdo da área coberta dos fundos, encostada na divisa. É aberta, com a máquina e o tanque na parede da divisa, num piso de 1,50 × 2,00.
+- **Quarto 2:** ficou com o lugar da lavanderia e foi até a parede do fundo, com 2,70 × 4,65 (no rascunho eram 2,70 × 4,00).
+  - A P7 e a J6, que eram da lavanderia, saíram, e o fundo do quarto ficou fechado.
+  - O guarda-roupa foi para a nova parede do fundo, e no meio do quarto entrou uma escrivaninha na parede da esquerda.
+- **Edícula:**
+  - Saiu a parede entre a cozinha de fundo e a área coberta, e a cozinha ficou aberta para a mesa.
+  - O banheiro saiu, com a P9, a J8 e a parede dele. A cozinha de fundo passou a ter 4,40 × 2,00, com a geladeira no canto onde era o banheiro.
 
 ## Suposições a confirmar
 
-1. A faixa de 2 m atrás da lavanderia e da cozinha virou uma área coberta sob a laje, aberta para o quintal. A lavanderia (P7) e o banheiro (P5) abrem para ela.
-2. A cozinha de fundo é o cômodo de 3 × 2,0 do meio da edícula (o rótulo está escrito em cima da linha). A P8 é a entrada dela, vinda da parte da esquerda, que virou área coberta aberta para o quintal.
-3. A P9 abre para dentro da cozinha de fundo, porque o banheiro tem só 1,10 m de largura.
-4. A área da frente, à esquerda da sala (2,85 × 3,65), é descoberta. Somada ao recuo, cabe um carro.
-5. O quintal entre a casa e a edícula tem 3,00 m.
-6. O recuo da frente tem 3,00 m. O corredor lateral à direita tem 1,50 m: as janelas J2 a J5 dão para ele. O lado esquerdo fica na divisa, sem janelas.
-7. A barra preta entre a sala e a cozinha virou um balcão de alvenaria de 1,60 × 0,35 m, com 1,10 m de altura e tampo de granito.
-8. O quadradinho preto na lavanderia virou o tanque.
-9. A laje da casa é plana, sem telhado. O caixote tem 0,60 m de beiral e 0,50 m de altura.
-10. O telhado da edícula cai para o quintal porque o fundo do terreno também faz divisa. A inclinação de 35% é a de costume para telha de barro.
+1. A faixa de 2 m atrás do Quarto 2 e da cozinha virou uma área coberta sob a laje, aberta para o quintal. A cozinha (P10) e o banheiro (P5) abrem para ela, e a lavanderia fica no canto da esquerda.
+2. A cozinha de fundo fica no meio e na direita da edícula (o rótulo do rascunho está escrito em cima da linha). A parte da esquerda virou área coberta aberta para o quintal.
+3. A área da frente, à esquerda da sala (2,85 × 3,65), é descoberta. Somada ao recuo, cabe um carro.
+4. O quintal entre a casa e a edícula tem 3,00 m.
+5. O recuo da frente tem 3,00 m. O corredor lateral à direita tem 1,50 m: as janelas J3, J4 e J5 dão para ele. O lado esquerdo fica na divisa, sem janelas.
+6. A barra preta entre a sala e a cozinha virou um balcão de alvenaria de 1,60 × 0,35 m, com 1,10 m de altura e tampo de granito.
+7. O quadradinho preto na lavanderia virou o tanque, que foi junto para a área coberta.
+8. A laje da casa é plana, sem telhado. O caixote tem 0,60 m de beiral e 0,50 m de altura.
+9. O telhado da edícula cai para o quintal porque o fundo do terreno também faz divisa. A inclinação de 35% é a de costume para telha de barro.
