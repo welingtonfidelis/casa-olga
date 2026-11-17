@@ -480,6 +480,62 @@ FOOT.forEach(p=>slabShape(p,H,H+LAJE,M.laje,roof));
 box(0.15,6.00,H-0.30,H,-10.75,-10.60,M.wall,roof,true);   // viga da área coberta dos fundos
 box(0.15,4.75,H-0.30,H,-13.90,-13.75,M.wall,roof,true);   // viga da área coberta da edícula
 
+/* caixote: a laje da casa avança 0,60 m e fecha em caixa de 0,50 m de altura (desce 0,18 abaixo da laje e sobe 0,20 acima dela),
+   em volta de tudo menos a lateral esquerda, que é a divisa com o vizinho (x = 0). Um contorno só: borda de fora e volta pela face das paredes. */
+const CX=0.60;
+slabShape([[0,-10.75-CX],[9.30+CX,-10.75-CX],[9.30+CX,CX],[2.85-CX,CX],[2.85-CX,-3.65+CX],[0,-3.65+CX],
+  [0,-3.65],[2.85,-3.65],[2.85,0],[9.30,0],[9.30,-10.75],[0,-10.75]],H-0.18,H+LAJE+0.20,M.wall,roof);
+
+/* edícula: telhado de telha de barro (capa e canal) em meia-água, caindo para o quintal; a laje fica por baixo, como forro.
+   Inclinação de 35%; beiral de 0,60 m para o quintal e de 0,30 m para a direita; nada passa das divisas (esquerda e fundo). */
+const TI=0.35, TB=0.03;                                   // inclinação e espessura do tabuado
+const yT=z=>H+LAJE+0.02+TI*(-13.75-z);                    // face de baixo do telhado: encosta na laje na linha da frente
+const TILE=(()=>{const t=canvasTex(256,256,(g,w,h)=>{     // 8 × 8 telhas: cor de cada uma e sombra da fiada de cima
+  const cs=['#b65a33','#a9502c','#c0683c','#9c4a29','#b45f37','#c3714a','#8f4427','#b9623a'];
+  for(let r=0;r<8;r++) for(let c=0;c<8;c++){const x=c*w/8,y=r*h/8;
+    g.fillStyle=cs[(Math.random()*cs.length)|0]; g.fillRect(x,y,w/8,h/8);
+    const gr=g.createLinearGradient(0,y,0,y+h/8); gr.addColorStop(0,'rgba(40,15,5,.45)'); gr.addColorStop(.35,'rgba(40,15,5,0)'); gr.addColorStop(1,'rgba(255,230,200,.10)');
+    g.fillStyle=gr; g.fillRect(x,y,w/8,h/8);}
+  speck(g,w,h,2500,.18);});
+  return new THREE.MeshStandardMaterial({map:t,roughness:.8,side:THREE.DoubleSide});})();
+function slopeBoard(x1,x2,zA,zB,yOf,th,mat,group){ // tábua inclinada no plano z-y: face de cima na linha yOf(z), espessura th para baixo
+  const yA=yOf(zA),yB=yOf(zB),L=Math.hypot(zB-zA,yB-yA),sz=(zB-zA)/L,sy=(yB-yA)/L; let nz=sy,ny=-sz; if(ny<0){nz=-nz;ny=-ny;}
+  const g=new THREE.BoxGeometry(x2-x1,th,L), m=new THREE.Mesh(g,mat);
+  m.rotation.x=Math.atan2(-(yB-yA),zB-zA); m.position.set((x1+x2)/2-OX,(yA+yB)/2-ny*th/2,(zA+zB)/2-nz*th/2-OZ);
+  m.castShadow=m.receiveShadow=true; group.add(m);
+  const e=new THREE.LineSegments(new THREE.EdgesGeometry(g),M.edge); e.position.copy(m.position); e.rotation.copy(m.rotation); group.add(e); return m;
+}
+function gable(x1,x2,pts,mat,group){ // parede de contorno livre no plano z-y (oitão), de x1 a x2
+  const g=new THREE.ExtrudeGeometry(new THREE.Shape(pts.map(([z,y])=>new THREE.Vector2(-z,y))),{depth:x2-x1,bevelEnabled:false});
+  g.rotateY(Math.PI/2); g.translate(x1-OX,0,-OZ);
+  const m=new THREE.Mesh(g,mat); m.castShadow=m.receiveShadow=true; group.add(m);
+  group.add(new THREE.LineSegments(new THREE.EdgesGeometry(g),M.edge)); return m;
+}
+function tiles(x1,x2,zA,zB,yOf,group){ // capa e canal: onda de 0,30 m ao longo de x e fiadas de 0,40 m com degrau, da beira (zA) ao alto (zB)
+  const P=0.30,AMP=0.05,C=0.40,E=0.022,nx=Math.round((x2-x1)/P)*8;
+  const yA=yOf(zA),yB=yOf(zB),L=Math.hypot(zB-zA,yB-yA),sz=(zB-zA)/L,sy=(yB-yA)/L; let nz=sy,ny=-sz; if(ny<0){nz=-nz;ny=-ny;}
+  const nc=Math.ceil(L/C-0.01),pos=[],uv=[],idx=[],row=nx+1;
+  for(let k=0;k<nc;k++) [[k*C,E],[Math.min(L,(k+1)*C),0]].forEach(([s,lift])=>{ // pé da fiada levantado, cabeça encostada
+    for(let i=0;i<=nx;i++){const x=x1+(x2-x1)*i/nx, w=AMP*(1+Math.sin(2*Math.PI*(x-x1)/P))+lift;
+      pos.push(x-OX,yA+sy*s+ny*w,zA+sz*s+nz*w-OZ); uv.push((x-x1)/P/8,s/C/8);}
+  });
+  for(let r=0;r<nc*2-1;r++) for(let i=0;i<nx;i++){const a=r*row+i,b=a+1,c=a+row,d=c+1; idx.push(a,b,c,b,d,c);}
+  const g=new THREE.BufferGeometry(); g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3)); g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));
+  g.setIndex(idx); g.computeVertexNormals();
+  const m=new THREE.Mesh(g,TILE); m.castShadow=m.receiveShadow=true; group.add(m); return m;
+}
+{
+  const EZ=-13.75+0.60, BZ=-16.05, RX=9.30+0.30, deck=z=>yT(z)+TB;
+  gable(0,0.15,[[-13.75,H+LAJE],[-13.75,yT(-13.75)],[BZ,yT(BZ)],[BZ,H+LAJE]],M.wall,roof);       // oitão da esquerda, na divisa
+  gable(9.15,9.30,[[-13.75,H+LAJE],[-13.75,yT(-13.75)],[BZ,yT(BZ)],[BZ,H+LAJE]],M.wall,roof);    // oitão da direita
+  box(0.15,9.15,H+LAJE,yT(-15.90),BZ,-15.90,M.wall,roof,true);                                   // parede do fundo sobe até o telhado
+  slopeBoard(0,RX,EZ,BZ,deck,TB,M.wood,roof);                                                    // tabuado (forro do beiral)
+  box(0,RX+0.025,yT(EZ)-0.12,deck(EZ),EZ,EZ+0.025,M.wood,roof,true);                             // testeira da beira
+  slopeBoard(RX,RX+0.025,EZ,BZ,deck,0.15,M.wood,roof);                                           // testeira da lateral direita
+  tiles(0,RX+0.04,EZ+0.06,BZ,deck,roof);                                                         // telhas passam 6 cm da beira e 4 cm da lateral
+  box(0,RX+0.04,deck(BZ)+0.06,deck(BZ)+0.16,BZ,BZ+0.12,M.steel,roof,true);                       // rufo no alto, junto da divisa do fundo
+}
+
 /* móveis básicos (somem com "Móveis") */
 const furn=new THREE.Group(); scene.add(furn);
 const F=(x1,x2,y0,y1,z1,z2,mat,edges)=>box(x1,x2,y0,y1,z1,z2,mat,furn,edges!==false);

@@ -2,7 +2,7 @@
 
 Modelo 3D interativo da casa desenhada no rascunho à mão: uma página HTML só, com [three.js](https://threejs.org) r128 por CDN. A parte técnica veio da Casa Alto da Colina; o desenho da casa é outro.
 
-- Pé-direito único de 3,00 m e laje plana convencional por cima.
+- Pé-direito único de 3,00 m. A casa tem laje plana com caixote em volta, menos na divisa da esquerda; a edícula tem telhado de telha de barro.
 - Casa em L (9,30 × 10,75 m, sem o canto da frente à esquerda) e edícula nos fundos (9,30 × 2,30 m): 110,96 m² construídos.
 - Modos: casa completa, sem teto e planta (paredes cortadas a 1,20 m; a janela acima do corte vira uma faixa azul).
 - Câmeras: isométrica, de cima, fachada e fundos (quintal e frente da edícula).
@@ -59,6 +59,10 @@ As portas têm 2,10 m de altura: P8 0,90, P2/P3/P6/P7 0,80, P4/P5/P9 0,70. A P1 
   - Suíte: cama de casal (1,38) na vertical, encostada na parede da J3, com a cabeceira na parede da frente e o criado-mudo do lado livre. O guarda-roupa fica no fundo.
   - Quarto 2: cama na vertical, com a cabeceira sob a J1. Ela foi puxada para a esquerda para a P6 abrir, e o criado-mudo fica desse lado. O guarda-roupa ocupa a parede do fundo.
   - Nos três quartos sobram cerca de 50 cm entre o pé da cama e o guarda-roupa.
+- **Caixote:** a laje da casa avança 0,60 m e fecha numa caixa de 0,50 m de altura, que desce 0,18 abaixo da laje e sobe 0,20 acima dela. Ele contorna a frente, a lateral direita, o fundo e os dois lados que dão para a área livre da frente. A lateral esquerda faz divisa com o vizinho e fica sem caixote, com a laje rente à parede.
+- **Telhado da edícula:** a laje aparente deu lugar a um telhado de telha de barro (capa e canal) em meia-água de 35%, que cai para o quintal. A laje continua por baixo, como forro, e as paredes laterais sobem em oitão até o telhado.
+  - O beiral tem 0,60 m para o quintal e 0,30 m para a direita, com tabuado e testeira de madeira.
+  - Na esquerda e no fundo, que fazem divisa, não há beiral; no alto, junto do fundo, há um rufo.
 
 ## Suposições a confirmar
 
@@ -70,4 +74,5 @@ As portas têm 2,10 m de altura: P8 0,90, P2/P3/P6/P7 0,80, P4/P5/P9 0,70. A P1 
 6. O recuo da frente tem 3,00 m. O corredor lateral à direita tem 1,50 m: as janelas J2 a J5 dão para ele. O lado esquerdo fica na divisa, sem janelas.
 7. A barra preta entre a sala e a cozinha virou um balcão de alvenaria de 1,60 × 0,35 m, com 1,10 m de altura e tampo de granito.
 8. O quadradinho preto na lavanderia virou o tanque.
-9. A laje é plana, sem telhado e sem platibanda.
+9. A laje da casa é plana, sem telhado. O caixote tem 0,60 m de beiral e 0,50 m de altura.
+10. O telhado da edícula cai para o quintal porque o fundo do terreno também faz divisa. A inclinação de 35% é a de costume para telha de barro.
